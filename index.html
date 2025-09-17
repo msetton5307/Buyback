@@ -7,8 +7,7 @@
     <meta name="description" content="Turn your old phone into cash with SecondHandCell. Get a quick, easy, and transparent quote for your iPhone, Samsung, and more. Free shipping and fast payment." />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="/favicon/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17534255111"></script>
@@ -27,12 +26,326 @@
     <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
 
     <style>
+        :root {
+            --primary-500: #2563eb;
+            --primary-600: #1d4ed8;
+            --primary-700: #1e3a8a;
+            --accent-500: #38bdf8;
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Poppins', sans-serif; /* Applied new font */
+            font-family: 'Inter', sans-serif;
             background-color: #f8fafc; /* Tailwind slate-50 */
             color: #1e293b; /* Tailwind slate-800 */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        h5, h6 {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            background: radial-gradient(circle at 10% 20%, rgba(148, 163, 184, 0.18), transparent 60%),
+                        linear-gradient(135deg, #0f172a 0%, var(--primary-700) 45%, var(--primary-500) 90%);
+            color: #f8fafc;
+            isolation: isolate;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            inset: -20% -20% 40% -10%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, transparent 60%);
+            opacity: 0.8;
+            filter: blur(0px);
+            transform: rotate(-8deg);
+        }
+
+        .hero-section::after {
+            content: "";
+            position: absolute;
+            inset: 50% -40% -40% 40%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 65%);
+            opacity: 0.6;
+            transform: rotate(12deg);
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            align-items: center;
+            text-align: center;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-container {
+                flex-direction: row;
+                align-items: center;
+                text-align: left;
+                gap: 4rem;
+            }
+        }
+
+        .hero-content {
+            max-width: 38rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-badge i {
+            color: #fde68a;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 20px 45px rgba(15, 23, 42, 0.35);
+        }
+
+        .hero-title span {
+            color: #bbf7d0;
+        }
+
+        .hero-description {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: rgba(241, 245, 249, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        @media (min-width: 640px) {
+            .hero-actions {
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-500), var(--primary-500));
+            color: white;
+            padding: 0.9rem 2.6rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            box-shadow: 0 20px 35px -12px rgba(59, 130, 246, 0.7);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 32px 40px -20px rgba(96, 165, 250, 0.8);
+            filter: brightness(1.05);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2.2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            color: rgba(241, 245, 249, 0.92);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background-color: rgba(15, 23, 42, 0.15);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            color: white;
+            background-color: rgba(15, 23, 42, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .hero-stats {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        .hero-stat {
+            background: rgba(15, 23, 42, 0.25);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 35px -20px rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(6px);
+        }
+
+        .hero-stat strong {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f8fafc;
+        }
+
+        .hero-stat span {
+            display: block;
+            margin-top: 0.35rem;
+            font-size: 0.95rem;
+            color: rgba(226, 232, 240, 0.85);
+        }
+
+        .hero-media {
+            position: relative;
+            width: 100%;
+            max-width: 26rem;
+        }
+
+        .hero-media::before,
+        .hero-media::after {
+            content: "";
+            position: absolute;
+            border-radius: 9999px;
+            z-index: -1;
+            filter: blur(60px);
+            opacity: 0.75;
+        }
+
+        .hero-media::before {
+            inset: -20% 10% auto -10%;
+            height: 60%;
+            background: rgba(96, 165, 250, 0.6);
+        }
+
+        .hero-media::after {
+            inset: auto -15% -20% 20%;
+            height: 55%;
+            background: rgba(59, 130, 246, 0.45);
+        }
+
+        .hero-media-card {
+            position: relative;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            background: rgba(15, 23, 42, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 35px 60px -30px rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-media-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .hero-media-card::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0 0;
+            height: 45%;
+            background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.75) 100%);
+        }
+
+        .hero-media-caption {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            right: 1.5rem;
+            background: rgba(15, 23, 42, 0.55);
+            border-radius: 1.25rem;
+            padding: 1rem 1.25rem;
+            color: #f8fafc;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero-media-caption strong {
+            font-size: 1rem;
+            letter-spacing: 0.04em;
+        }
+
+        .hero-media-caption span {
+            font-size: 0.85rem;
+            color: rgba(226, 232, 240, 0.85);
+        }
+
+        .section-divider {
+            position: relative;
+            height: 90px;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .section-divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 100%;
+        }
+
+        .section-divider--soft svg path {
+            fill: var(--slate-100);
+        }
+
+        .section-divider--plain svg path {
+            fill: var(--slate-50);
+        }
+
+        .section-soft {
+            background: linear-gradient(180deg, rgba(241, 245, 249, 0.9) 0%, rgba(226, 232, 240, 0.7) 100%);
+        }
+
+        .section-plain {
+            background-color: var(--slate-50);
+        }
+
+        .section-contrast {
+            position: relative;
+            background: radial-gradient(circle at 15% 25%, rgba(37, 99, 235, 0.12), transparent 55%),
+                        linear-gradient(180deg, rgba(248, 250, 252, 0.95) 0%, rgba(226, 232, 240, 0.85) 100%);
         }
         .homepage-card-link:hover .homepage-card-inner,
         .feature-card:hover {
@@ -376,21 +689,30 @@
 
             /* Adjust hero section for mobile */
             .hero-section {
-                padding-top: 6rem;
-                padding-bottom: 6rem;
+                padding-top: 5rem;
+                padding-bottom: 5rem;
             }
 
-            .hero-section h1 {
-                font-size: 2.5rem;
+            .hero-title {
+                font-size: 2.4rem;
             }
 
-            .hero-section p {
-                font-size: 1rem;
+            .hero-description {
+                font-size: 1.05rem;
             }
 
-            .hero-section a {
-                font-size: 1rem;
-                padding: 0.75rem 2rem;
+            .hero-actions {
+                width: 100%;
+            }
+
+            .hero-actions .btn-primary,
+            .hero-actions .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
             }
 
             /* General section adjustments for mobile */
@@ -547,18 +869,53 @@
     </div>
 </header>
     <main>
-        <section class="relative py-24 md:py-32 text-center overflow-hidden" style="background-image: url('https://raw.githubusercontent.com/ToratYosef/BuyBacking/main/assets/bg.png'); background-size: cover; background-position: center;">
-            <div class="absolute inset-0 bg-slate-100/90" aria-hidden="true"></div>
-            <div class="container mx-auto px-4 relative">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">Turn Your Old Phone Into Cash.</h1>
-                <p class="max-w-2xl mx-auto text-lg md:text-xl text-slate-600 mb-8">
-                    Quick, easy, and transparent buyback for iPhone, Samsung, and more. Get a free quote in seconds!
-                </p>
-                <a href="sell-device.html" class="bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-blue-700 transition-transform duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 inline-block">
-                    Get Your Instant Offer
-                </a>
+        <section class="hero-section">
+            <div class="container mx-auto px-4 hero-container">
+                <div class="hero-content">
+                    <span class="hero-badge"><i class="fa-solid fa-shield-heart"></i> Trusted by 10,000+ smart sellers</span>
+                    <h1 class="hero-title">Turn Your Old Phone Into <span>Guaranteed Cash</span></h1>
+                    <p class="hero-description">
+                        Sell your iPhone, Samsung, Google, and more in minutes. Lock in a transparent quote, enjoy a prepaid shipping kit, and get paid within 24 hours of inspection.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="sell-device.html" class="btn-primary">
+                            Get Your Instant Offer <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#features" class="btn-secondary">
+                            See how it works <i class="fa-solid fa-circle-play"></i>
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <strong>24 hrs</strong>
+                            <span>Average payout time</span>
+                        </div>
+                        <div class="hero-stat">
+                            <strong>Free Kit</strong>
+                            <span>Shipping &amp; tracking covered</span>
+                        </div>
+                        <div class="hero-stat">
+                            <strong>4.9 / 5</strong>
+                            <span>Customer satisfaction</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-media">
+                    <div class="hero-media-card">
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Happy customer trading in a smartphone">
+                        <div class="hero-media-caption">
+                            <strong>“Best experience selling my phone!”</strong>
+                            <span>Jessica, paid within 24 hours</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
+        <div class="section-divider section-divider--soft" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,96L48,101.3C96,107,192,117,288,117.3C384,117,480,107,576,96C672,85,768,75,864,69.3C960,64,1056,64,1152,58.7C1248,53,1344,43,1392,37.3L1440,32V0H1392C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0H0Z"></path>
+            </svg>
+        </div>
 
         <section id="floatingBanner" class="floating-banner bg-red-600 text-white shadow-xl">
             <div class="container mx-auto px-4 py-4 text-center floating-banner-content">
@@ -571,20 +928,28 @@
             </div>
         </section>
         
-        <section id="features" class="container mx-auto px-4 py-20">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Why Sell With Us?</h2>
-                <p class="mt-3 text-lg text-slate-600">Our process is simple, safe, and gets you the most for your device.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="feature-card bg-white p-6 rounded-xl shadow-lg text-center"><div class="mx-auto mb-4 w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-3xl">📦</div><h3 class="text-xl font-semibold mb-2 text-slate-800">Free Shipping Kit</h3><p class="text-slate-600">We send you a prepaid box. Just pack your device and drop it in the mail.</p></div>
-                <div class="feature-card bg-white p-6 rounded-xl shadow-lg text-center"><div class="mx-auto mb-4 w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-3xl">💸</div><h3 class="text-xl font-semibold mb-2 text-slate-800">Fast Payment</h3><p class="text-slate-600">Get paid quickly via Venmo, Zelle, or PayPal as soon as we inspect your device, with funds available in as fast as 24 hours.</p></div>
-                <div class="feature-card bg-white p-6 rounded-xl shadow-lg text-center"><div class="mx-auto mb-4 w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-3xl">🛡️</div><h3 class="text-xl font-semibold mb-2 text-slate-800">Data Protection</h3><p class="text-slate-600">We professionally wipe all personal data from every device we receive.</p></div>
-                <div class="feature-card bg-white p-6 rounded-xl shadow-lg text-center"><div class="mx-auto mb-4 w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-3xl">🔒</div><h3 class="text-xl font-semibold mb-2 text-slate-800">Highest Payouts</h3><p class="text-slate-600">Our price-lock guarantee ensures you get the quote you were offered.</p></div>
+        <section id="features" class="section-soft py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Why Sell With Us?</h2>
+                    <p class="mt-3 text-lg text-slate-600">Our process is simple, safe, and gets you the most for your device.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="feature-card bg-white/90 p-6 rounded-xl shadow-lg text-center"><div class="mx-auto mb-4 w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-3xl">📦</div><h3 class="text-xl font-semibold mb-2 text-slate-800">Free Shipping Kit</h3><p class="text-slate-600">We send you a prepaid box. Just pack your device and drop it in the mail.</p></div>
+                    <div class="feature-card bg-white/90 p-6 rounded-xl shadow-lg text-center"><div class="mx-auto mb-4 w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-3xl">💸</div><h3 class="text-xl font-semibold mb-2 text-slate-800">Fast Payment</h3><p class="text-slate-600">Get paid quickly via Venmo, Zelle, or PayPal as soon as we inspect your device, with funds available in as fast as 24 hours.</p></div>
+                    <div class="feature-card bg-white/90 p-6 rounded-xl shadow-lg text-center"><div class="mx-auto mb-4 w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-3xl">🛡️</div><h3 class="text-xl font-semibold mb-2 text-slate-800">Data Protection</h3><p class="text-slate-600">We professionally wipe all personal data from every device we receive.</p></div>
+                    <div class="feature-card bg-white/90 p-6 rounded-xl shadow-lg text-center"><div class="mx-auto mb-4 w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-3xl">🔒</div><h3 class="text-xl font-semibold mb-2 text-slate-800">Highest Payouts</h3><p class="text-slate-600">Our price-lock guarantee ensures you get the quote you were offered.</p></div>
+                </div>
             </div>
         </section>
 
-        <section id="popular" class="py-20">
+        <div class="section-divider section-divider--plain" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,0L48,10.7C96,21,192,43,288,58.7C384,75,480,85,576,74.7C672,64,768,32,864,21.3C960,11,1056,21,1152,37.3C1248,53,1344,75,1392,85.3L1440,96V120H1392C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120H0Z"></path>
+            </svg>
+        </div>
+
+        <section id="popular" class="section-plain py-20">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Popular Devices We Buy</h2>
@@ -599,16 +964,28 @@
             </div>
         </section>
 
-        <section id="testimonials" class="bg-slate-100 py-20">
+        <div class="section-divider section-divider--soft" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,64L48,69.3C96,75,192,85,288,85.3C384,85,480,75,576,80C672,85,768,107,864,112C960,117,1056,107,1152,96C1248,85,1344,75,1392,69.3L1440,64V120H1392C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120H0Z"></path>
+            </svg>
+        </div>
+
+        <section id="testimonials" class="section-contrast py-20">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-12"><h2 class="text-3xl md:text-4xl font-bold text-slate-800">What Our Customers Are Saying</h2></div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white p-6 rounded-xl shadow-lg"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-700 text-lg">JS</div><div class="ml-4"><p class="font-semibold text-slate-800">Jessica S.</p><p class="text-sm text-slate-500">Sold an iPhone 13</p></div></div><p class="text-slate-600">"Extremely fast and easy process! The shipping kit arrived in two days and I got paid the day after they received my phone. Got way more than I expected!"</p></div>
-                    <div class="bg-white p-6 rounded-xl shadow-lg"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-700 text-lg">MB</div><div class="ml-4"><p class="font-semibold text-slate-800">Michael B.</p><p class="text-sm text-slate-500">Sold a Galaxy S22</p></div></div><p class="text-slate-600">"Customer service was excellent. I had a question about my order and they responded within an hour. The whole process was transparent and simple."</p></div>
-                    <div class="bg-white p-6 rounded-xl shadow-lg"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-700 text-lg">AR</div><div class="ml-4"><p class="font-semibold text-slate-800">Anna R.</p><p class="text-sm text-slate-500">Sold a Pixel 7</p></div></div><p class="text-slate-600">"The best experience selling a device online. The price they quoted was the price I got. Highly recommend SecondHandCell!"</p></div>
+                    <div class="bg-white/90 p-6 rounded-2xl shadow-xl border border-white/40 backdrop-blur-sm"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-700 text-lg">JS</div><div class="ml-4"><p class="font-semibold text-slate-800">Jessica S.</p><p class="text-sm text-slate-500">Sold an iPhone 13</p></div></div><p class="text-slate-600">"Extremely fast and easy process! The shipping kit arrived in two days and I got paid the day after they received my phone. Got way more than I expected!"</p></div>
+                    <div class="bg-white/90 p-6 rounded-2xl shadow-xl border border-white/40 backdrop-blur-sm"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-700 text-lg">MB</div><div class="ml-4"><p class="font-semibold text-slate-800">Michael B.</p><p class="text-sm text-slate-500">Sold a Galaxy S22</p></div></div><p class="text-slate-600">"Customer service was excellent. I had a question about my order and they responded within an hour. The whole process was transparent and simple."</p></div>
+                    <div class="bg-white/90 p-6 rounded-2xl shadow-xl border border-white/40 backdrop-blur-sm"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-700 text-lg">AR</div><div class="ml-4"><p class="font-semibold text-slate-800">Anna R.</p><p class="text-sm text-slate-500">Sold a Pixel 7</p></div></div><p class="text-slate-600">"The best experience selling a device online. The price they quoted was the price I got. Highly recommend SecondHandCell!"</p></div>
                 </div>
             </div>
         </section>
+
+        <div class="section-divider section-divider--plain" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,32L48,48C96,64,192,96,288,112C384,128,480,128,576,117.3C672,107,768,85,864,80C960,75,1056,85,1152,90.7C1248,96,1344,96,1392,96L1440,96V120H1392C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120H0Z"></path>
+            </svg>
+        </div>
 
         <section class="bg-white py-16 md:py-24">
             <div class="container mx-auto px-4 text-center">
@@ -616,8 +993,8 @@
                 <p class="max-w-xl mx-auto text-lg text-slate-600 mb-8">
                     Start the process now and get cash for your device in as little as 24 hours.
                 </p>
-                <a href="sell-device.html" class="bg-blue-600 text-white px-10 py-5 rounded-full font-bold text-xl shadow-2xl hover:bg-blue-700 transition-transform duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 inline-block">
-                    Sell Device Now! <i class="fa-solid fa-arrow-right-long ml-2"></i>
+                <a href="sell-device.html" class="btn-primary text-xl">
+                    Sell Device Now! <i class="fa-solid fa-arrow-right-long"></i>
                 </a>
             </div>
         </section>
